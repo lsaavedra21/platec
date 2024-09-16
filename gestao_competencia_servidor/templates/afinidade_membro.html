@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afinidades do Membro</title>
+</head>
+<body>
+    <div class="header">
+        <a href="{% url 'pagina_inicial' %}" title="Voltar à página inicial" style="margin-right: auto;">
+            <button class="btn btn-primary">Voltar</button>
+        </a>
+        <h1 class="title">Afinidades do Membro</h1>
+    </div>
+
+    <h2>Membro: {{ membro.nome }}</h2>
+
+    <table>
+        <tr>
+            <th></th> <!-- Cabeçalho da primeira coluna (espaço em branco) -->
+            {% for area in areas %}
+            <th>{{ area }}</th> <!-- Cabeçalho das áreas -->
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{{ membro.nome }}</td> <!-- Nome do membro na primeira coluna -->
+            {% for area in areas %}
+            <td></td> <!-- Deixe o corpo da tabela vazio para preencher posteriormente -->
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>

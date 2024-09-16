@@ -1,0 +1,6 @@
+Logout - Interno - LB04876 - Renault - 15/04/2024 15:34:08
+Login - Interno - LB04876 - Renault - 15/04/2024 15:33:59
+Logout - Externo - Eduardo - CAssas - 15/04/2024 12:02:15
+Login - Externo - Eduardo - CAssas - 15/04/2024 12:02:14
+Logout - Interno - LB04876 - Renault - 15/04/2024 12:02:05
+Login - Interno - LB04876 - Renault - 15/04/2024 12:02:02

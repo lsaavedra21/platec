@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matriz ILU por setor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #007bff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+        }
+
+        .title {
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #666; /* Cinza mais escuro */
+            color: black; /* Cor do texto dos títulos */
+            font-weight: bold;
+        }
+
+        td {
+            background-color: white; /* Fundo branco */
+            color: black; /* Texto preto */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .action-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .action-icon {
+            margin: 0 5px;
+            font-size: 20px;
+            color: #007bff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <div class="header">
+
+        <img src="data:image/png;base64,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" alt="Logo" class="logo">
+        <h1 class="title">Matriz ILU por setor</h1>
+
+    </div>
+
+    <div class="btn-container">
+        <a href="{% url 'matriz_competencias_montagem_cvp' %}" class="btn btn-primary btn-lg btn-block">Montagem CVP</a>
+        <a href="{% url 'matriz_competencias_carroceria_cvp' %}" class="btn btn-primary btn-lg btn-block">Carroceria CVP</a>
+        <a href="{% url 'matriz_competencias_pintura_cvp' %}" class="btn btn-primary btn-lg btn-block">Pintura CVP</a>
+        <a href="{% url 'matriz_competencias_carroceria_cvu' %}" class="btn btn-primary btn-lg btn-block">Carroceria CVU</a>
+        <a href="{% url 'matriz_competencias_montagem_cvu' %}" class="btn btn-primary btn-lg btn-block">Montagem CVU</a>
+        <a href="{% url 'matriz_competencias_pintura_cvu' %}" class="btn btn-primary btn-lg btn-block">Pintura CVU</a>
+
+    </div>
+
+    <!-- ... Your existing footer and other content ... -->
+</body>
+</html>

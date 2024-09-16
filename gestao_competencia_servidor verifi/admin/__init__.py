@@ -1,0 +1,1 @@
+from .gestao_competencia_igor import *

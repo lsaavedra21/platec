@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formações Realizadas</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Formações Realizadas</h1>
+    </div>
+
+
+        <!-- Filtro de pesquisa -->
+         <form method="get" action="" class="filter-form">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="filtroSetor" style="font-weight: bold;">Filtrar por Setor:</label>
+                        <select id="filtroSetor" name="setor">
+                            <option value="">Todos</option>
+                            {% for setor in setores %}
+                                <option value="{{ setor.id }}" {% if setor.id|stringformat:"s" == request.GET.setor %}selected{% endif %}>{{ setor.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            <button type="submit" class="btn btn-primary filter-btn"> <i class="fas fa-filter"></i> Pesquisar</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Membro</th>
+                    <th>Formação</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for realizacao in formacoes_realizadas %}
+                    <tr>
+                        <td>{{ realizacao.membro.nome }}</td>
+                        <td>{{ realizacao.formacao.nome }}</td>
+                        <td>{{ realizacao.Data }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</body>
+</html>
+
+{% endblock %}

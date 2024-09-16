@@ -1,0 +1,6 @@
+Como conectar no banco de dados, tem que estar na rede interna, sem acesso a internet
+
+host: 10.187.6.154
+database: platec
+username: platec
+password: platec

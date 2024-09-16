@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Formação - {{ formacao.nome }}</title>
+
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+
+</head>
+<body>
+
+    <div class="header">
+               <h1 class="title">Detalhes da Formação - {{ formacao.nome }}</h1>
+    </div>
+
+    <p>Descrição: {{ formacao.descricao }}</p>
+    <p>Tecnologia: {{ formacao.tecnologia }}</p>
+    <p>Duração: {{ formacao.duracao }}</p>
+</body>
+</html>
+
+{% endblock %}

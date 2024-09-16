@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colaboradores</title>
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+
+</head>
+<body class="membros-page">
+    <div class="header">
+
+        <h1 class="title">Colaboradores</h1>
+
+    </div>
+
+   <form method="get" action="" class="filter-form">
+    <label for="filtroSetor" style="font-weight: bold;">Filtrar por Setor:</label>
+    <select id="filtroSetor" name="setor">
+        <option value="" {% if not setor_filtrado %}selected{% endif %}>Todos</option>
+        {% for setor_item in setores %}
+            <option value="{{ setor_item.id }}" {% if setor_filtrado == setor_item.id %}selected{% endif %}>{{ setor_item.nome }}</option>
+        {% endfor %}
+    </select>
+        <button type="submit" class="btn btn-primary filter-btn"> <i class="fas fa-filter"></i> Filtrar</button>
+        <a href="{% url 'adicionar_membro' %}" class="btn btn-success add-btn"> <i class="fas fa-plus"></i> Adicionar</a>
+</form>
+
+     <table>
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Setor</th>
+                <th>Cargo</th>
+                <th>Email</th>
+                <th>Supervisor</th>
+                <th>Area</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+         <tbody>
+            {% for membro in membros %}
+            <tr>
+                <td>{{ membro.id }}</td>
+                <td>{{ membro.nome }}</td>
+                <td>{{ membro.setor.nome }}</td>
+                <td>{{ membro.cargo.nome }}</td>
+                <td>{{ membro.email }}</td> <!-- Exibe o campo "email" na coluna -->
+                <td>{{ membro.supervisor }}</td>
+                <td>{{ membro.area }}</td>
+                <td class="action-icons">
+                    <a href="{% url 'ver_competencia' membro.id %}" title="Ver Competências" class="action-icon">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="{% url 'editar_membro' membro.id %}" title="Editar Membro" class="action-icon">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'afinidade_membro' membro.id %}" title="Afinidade de Membro" class="action-icon">
+                        <i class="fas fa-link"></i>
+                    </a>
+                    <a href="{% url 'excluir_membro_1' membro.id %}" title="Excluir Membro" class="action-icon text-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+    </table>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Competência</title>
+</head>
+<body>
+    <h1>Adicionar Competência</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Competência</button>
+    </form>
+</body>
+</html>

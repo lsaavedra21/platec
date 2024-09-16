@@ -1,0 +1,115 @@
+<!-- myapp/templates/myapp/base.html -->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Gestão de Competências{% endblock %}</title>
+
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- styles -->
+
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+
+    <!-- scripts -->
+    <script defer src="{% static 'js/main.js'%}"></script>
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="{% static 'Logo_renault.png' %}" alt="Logo">
+            <span class="logo__name">Gestão de Competências</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="{% url 'membros' %}">
+                    <i class="fas fa-users"></i>
+                    <span class="link__name">Colaboradores</span>
+                </a>
+            </li>
+            <li>
+                <a href= "{% url 'competencias_por_setor' %}">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="link__name">Competências</span>
+                </a>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="link__name">Formações</span>
+                    </a>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="{% url 'formacoes_previstas' %}">Calendário</a></li>
+                    <li><a href="informacoes-formacoes">Histórico de Formações</a></li>
+                    <li><a href="{% url 'formacoes_platec' %}">Formações PLATEC</a></li>
+                    <li><a href="{% url 'novas_formacoes_previstas' %}">Programar Formação</a></li>
+                    <li><a href="{% url 'novas_formacoes_realizadas' %}">Validar Formação</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href= "{% url 'formacoes_realizadas' %}">
+                    <i class="fas fa-check-square"></i>
+                    <span class="link__name">Formações Realizadas</span>
+                </a>
+            </li>
+            <li>
+                <div class="icon-link" id="matrizILU">
+                    <a href="#">
+                        <i class="fas fa-chart-area"></i>
+                        <span class="link__name">Matriz ILU</span>
+                    </a>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="#">CARVP</a></li>
+                    <li><a href="#">PINVP</a></li>
+                    <li><a href="#">MONVP</a></li>
+                    <li><a href="#">ESTAMPARIA</a></li>
+                    <li><a href="#">CARVU</a></li>
+                    <li><a href="#">PINVU</a></li>
+                    <li><a href="#">MONVU</a></li>
+                    <li><a href="#">UTILIDADES</a></li>
+                    <li><a href="#">PLATEC</a></li>
+                </ul>
+            </li>
+             <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="link__name">Administrador</span>
+                    </a>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="{% url 'novas_formacoes_previstas' %}">Cadastro Formação</a></li>
+                    <li><a href="{% url 'novas_formacoes_realizadas' %}">Cadastro Colab Formação</a></li>
+                    <li><a href="{% url 'formacoes_previstas_admin' %}">Calendario de Formação Admin</a></li>
+
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <section class="home-section">
+        <div class="home-content">
+            <i class="fas fa-bars icon"></i>
+            <span class="text"></span>
+        </div>
+
+    </section>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

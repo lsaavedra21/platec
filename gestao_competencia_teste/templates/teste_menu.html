@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- normalize -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+
+    <!-- styles -->
+
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+
+    <!-- scripts -->
+    <script defer src="{% static 'js/main.js'%}"></script>
+
+    <title>Responsive Dropdown Sidebar Menu</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img class="logo" src="{% static 'Logo_renault.png' %}" alt="Logo">
+            <span class="logo__name">Gestão de Competências</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="#" onclick="loadContent('membros')">
+                    <i class="fas fa-users"></i>
+                    <span class="link__name">Membros</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="loadContent('competencias_por_setor')">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="link__name">Competências</span>
+                </a>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span class="link__name">Formações Previstas</span>
+                    </a>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="calendario.html" class="link__name">Calendário</a></li>
+                    <li><a href="informacoes-formacoes.html">Informações das Formações</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" onclick="loadContent('formacoes-realizadas')">
+                    <i class="fas fa-check-square"></i>
+                    <span class="link__name">Formações Realizadas</span>
+                </a>
+            </li>
+            <li>
+                <div class="icon-link" id="matrizILU">
+                    <a href="#">
+                        <i class="fas fa-chart-area"></i>
+                        <span class="link__name">Matriz ILU</span>
+                    </a>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="#">MONVP</a></li>
+                    <li><a href="#">CARVP</a></li>
+                    <li><a href="#">PINVP</a></li>
+                    <li><a href="#">CARVU</a></li>
+                    <li><a href="#">MONVU</a></li>
+                    <li><a href="#">PINVU</a></li>
+                    <li><a href="#">ESTAMPARIA</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <section class="home-section">
+        <div class="home-content">
+            <i class="fas fa-bars icon"></i>
+            <span class="text">Drop Down Sidebar</span>
+        </div>
+    </section>
+
+    <script>
+        function loadContent(url) {
+        // Adicione a lógica para carregar o conteúdo aqui
+        // Por exemplo, você pode usar o método fetch para buscar o conteúdo da URL
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                // Substituir o conteúdo da div principal com o conteúdo da página carregada
+                document.querySelector('.home-content').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar conteúdo:', error));
+    }
+
+    </script>
+</body>
+</html>

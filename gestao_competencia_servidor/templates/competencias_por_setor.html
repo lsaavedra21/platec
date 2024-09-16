@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Competências por setor</title>
+
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+
+</head>
+<body>
+    <div class="header">
+
+        <h1 class="title">Competências por setor</h1>
+
+   </div>
+
+    <form method="get" action="" class="filter-form">
+        <label for="filtroSetor" style="font-weight: bold;">Selecione um Setor:</label>
+        <select id="filtroSetor" name="setor">
+            <option value="">Todos os Setores</option>
+            {% for setor in setores %}
+                <option value="{{ setor.id }}">{{ setor.nome }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary filter-btn"> <i class="fas fa-filter"></i> Filtrar</button>
+         <a href="{% url 'adicionar_competencia' %}" class="btn btn-success add-btn"> <i class="fas fa-plus"></i> Adicionar Competência</a>
+    </form>
+
+    <table>
+        <tr>
+            <th>Setor</th>
+            <th>Competência</th>
+        </tr>
+        {% for competencia in competencias %}
+        <tr>
+            <td>{{ competencia.setor.nome }}</td>
+            <td>{{ competencia.nome }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+{% endblock %}
+

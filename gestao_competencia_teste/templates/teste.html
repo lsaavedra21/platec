@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+        /* Estilos para a estrutura do layout */
+        .container {
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        nav {
+            width: 18rem;
+            /* Adicione outros estilos conforme necessário para o seu sidebar */
+
+        }
+
+        main {
+            flex: 1;
+            /* Adicione outros estilos conforme necessário para o conteúdo da página */
+        }
+    </style>
+</head>
+<body>
+ <div class="container" style="
+    margin-left: 0px;
+    margin-right: 0px;
+    max-width: auto;
+    padding-left: 0;
+    padding-right: 0;
+">
+    <nav>
+        <div class="sidebar-top">
+            <div class="logo__wrapper">
+
+                  <img src="data:image/png;base64,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" alt="Logo" class="logo">
+
+                <h2 class="hide">Renault</h2>
+            </div>
+            <div class="expand-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M7 7l5 5l-5 5"></path>
+                  <path d="M13 7l5 5l-5 5"></path>
+               </svg>
+            </div>
+        </div>
+        <div class="sidebar-links">
+            <ul>
+                <li>
+                    <a href="#dashboard" title="Dashboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- ... SVG path elements for dashboard icon ... -->
+                        </svg>
+                        <span class="link hide">Dashboard</span>
+                    </a>
+                </li>
+                <!-- ... More sidebar links ... -->
+            </ul>
+        </div>
+        <div class="sidebar-links sidebar-bottom">
+            <div class="divider"></div>
+            <ul>
+                <li>
+                    <a href="{% url 'membros' %}" title="a">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- ... SVG path elements for membros icon ... -->
+                        </svg>
+                        <span class="link hide">Membros</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'competencias_por_setor' %}" title="Competências">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- ... SVG path elements for competências icon ... -->
+                        </svg>
+                        <span class="link hide">Competências</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'formacoes_previstas' %}" title="Formações Previstas">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                            <path d="M16 3l0 4"></path>
+                            <path d="M8 3l0 4"></path>
+                            <path d="M4 11l16 0"></path>
+                            <path d="M8 15h2v2h-2z"></path>
+                        </svg>
+                        <span class="link hide">Formações Previstas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'formacoes_realizadas' %}" title="Formações Realizadas">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                            <path d="M16 3l0 4"></path>
+                            <path d="M8 3l0 4"></path>
+                            <path d="M4 11l16 0"></path>
+                            <path d="M8 15h2v2h-2z"></path>
+                        </svg>
+                        <span class="link hide">Formações Realizadas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'matrizilu_setor' %}" title="Matriz ILU por setor">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#91959C" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- ... SVG path elements for matriz ILU por setor icon ... -->
+                        </svg>
+                        <span class="link hide">Matriz ILU por setor</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <div class="sidebar__profile">
+                <div class="avatar__wrapper">
+                    <img class="avatar" src="assets/joe-doe-profile.png" alt="Joe Doe Picture">
+                    <div class="online__status"></div>
+                </div>
+                <section class="avatar__name hide">
+                    <div class="user-name">Cigarrinha</div>
+                    <div class="email">joe.doe@atheros.ai</div>
+                </section>
+            </div>
+        </div>
+    </nav>
+     <main>
+            <div id="content">
+                <!-- Conteúdo da página carregada será inserido aqui -->
+            </div>
+        </main>
+   </div>
+    <script>
+    function loadPage(pageName) {
+        // Use AJAX para buscar o conteúdo da página
+        $.get(pageName + '.html', function(data) {
+            $('#content').html(data);
+        });
+    }
+    </script>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MEMBROS</title>
+    <style>
+        h1 {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>MEMBROS</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Setor</th>
+                <th>Cargo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui você pode usar uma estrutura de loop para exibir os membros -->
+            {% for membro in membros %}
+            <tr>
+                <td>{{ membro.id }}</td>
+                <td>{{ membro.nome }}</td>
+                <td>{{ membro.setor.nome }}</td>
+                <td>{{ membro.cargo.nome }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

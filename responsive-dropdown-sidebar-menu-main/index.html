@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- normalize -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+			integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<!-- boxicons -->
+		<link
+			href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+
+		<!-- styles -->
+		<link rel="stylesheet" href="./assets/css/main.css" />
+
+		<!-- scripts -->
+		<script defer src="./assets/js/main.js"></script>
+
+		<title>Responsive Dropdown Sidebar Menu</title>
+	</head>
+	<body>
+		<div class="sidebar">
+			<div class="logo-details">
+				<i class="bx bxl-c-plus-plus"></i>
+				<span class="logo__name">Mirror</span>
+			</div>
+			<ul class="nav-links">
+				<li>
+					<a href="#">
+						<i class="bx bx-grid-alt"></i>
+						<span class="link__name">Dashboard</span>
+					</a>
+					<ul class="sub-menu blank">
+						<li><a href="#" class="link__name">Dashboard</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="icon-link">
+						<a href="#">
+							<i class="bx bx-collection"></i>
+							<span class="link__name">Category</span>
+						</a>
+						<i class="bx bxs-chevron-down arrow"></i>
+					</div>
+					<ul class="sub-menu">
+						<li><a href="#" class="link__name">Category</a></li>
+						<li><a href="#">HTML & CSS</a></li>
+						<li><a href="#">JavaScript</a></li>
+						<li><a href="#">PHP & MySQL</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="icon-link">
+						<a href="#">
+							<i class="bx bx-book-alt"></i>
+							<span class="link__name">Posts</span>
+						</a>
+						<i class="bx bxs-chevron-down arrow"></i>
+					</div>
+					<ul class="sub-menu">
+						<li><a href="#" class="link__name">Posts</a></li>
+						<li><a href="#">Web Design</a></li>
+						<li><a href="#">Login Form</a></li>
+						<li><a href="#">Card Design</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">
+						<i class="bx bx-pie-chart-alt-2"></i>
+						<span class="link__name">Analytics</span>
+					</a>
+					<ul class="sub-menu blank">
+						<li><a href="#" class="link__name">Analytics</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">
+						<i class="bx bx-line-chart"></i>
+						<span class="link__name">Chart</span>
+					</a>
+					<ul class="sub-menu blank">
+						<li><a href="#" class="link__name">Chart</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="icon-link">
+						<a href="#">
+							<i class="bx bx-plug"></i>
+							<span class="link__name">Plugins</span>
+						</a>
+						<i class="bx bxs-chevron-down arrow"></i>
+					</div>
+					<ul class="sub-menu">
+						<li><a href="#" class="link__name">Plugins</a></li>
+						<li><a href="#">UI Face</a></li>
+						<li><a href="#">Pigments</a></li>
+						<li><a href="#">Box Icons</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">
+						<i class="bx bx-compass"></i>
+						<span class="link__name">Explore</span>
+					</a>
+					<ul class="sub-menu blank">
+						<li><a href="#" class="link__name">Explore</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">
+						<i class="bx bx-history"></i>
+						<span class="link__name">History</span>
+					</a>
+					<ul class="sub-menu blank">
+						<li><a href="#" class="link__name">History</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">
+						<i class="bx bx-cog"></i>
+						<span class="link__name">Settings</span>
+					</a>
+					<ul class="sub-menu blank">
+						<li><a href="#" class="link__name">Settings</a></li>
+					</ul>
+				</li>
+
+				<li>
+					<div class="profile-details">
+						<div class="profile-content">
+							<img src="./assets/img/profile.jpg" alt="img: profile" />
+						</div>
+						<div class="name-job">
+							<div class="name">Tommy Frost</div>
+							<div class="job">Web Designer</div>
+						</div>
+						<i class="bx bx-log-out"></i>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<section class="home-section">
+			<div class="home-content">
+				<i class="bx bx-menu icon"></i>
+				<span class="text">Drop Down Sidebar</span>
+			</div>
+		</section>
+	</body>
+</html>

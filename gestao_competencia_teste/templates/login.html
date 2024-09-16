@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <header>
+        <title>Login Gestão de Competências</title>
+        <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    </header>
+    <body>
+        <span class="background"></span>
+        <span class="centering">
+            <form class="my-form" method="post" action="{% url 'login' %}">
+                <span class="login-welcome-row">
+                    <img
+                        class="login-welcome"
+                        src="{% static 'Logo_Renault.png' %}"
+                    />
+                    <!-- optimize the image in production -->
+                    <h1>LogIn!</h1>
+                    <h1>Gestão de Competências</h1>
+                </span>
+                <div class="text-field">
+                    <label for="email">Email:</label>
+                    <input
+                        aria-label="Email"
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Your Email"
+                        required
+                    >
+                    <img
+                        alt="Email Icon"
+                        title="Email Icon"
+                        src="{% static 'email.svg' %}"
+                    >
+                </div>
+                <div class="text-field">
+                    <label for="password">Password:</label>
+                    <input
+                        id="password"
+                        type="password"
+                        aria-label="Password"
+                        name="password"
+                        placeholder="Your Password"
+                        title="Mínimo 6 caracteres com ao menos 1 Letra e 1 Número"
+                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                        required
+                    >
+                    <img
+                        alt="Password Icon"
+                        title="Password Icon"
+                        src="{% static 'password.svg' %}"
+                    >
+                </div>
+                <input type="submit" class="my-form__button" value="Login" />
+                <div class="my-form__actions">
+                    <div class="my-form__row">
+                        <span>Esqueceu o seu password?</span>
+                        <a href="#" title="Reset Password">Reset Password</a>
+                    </div>
+                    <div class="my-form__signup">
+                        <a href="#" title="Create Account">Criar Conta</a>
+                    </div>
+                </div>
+            </form>
+        </span>
+        <script src="{% static 'js/script2.js' %}"></script>
+    </body>
+</html>
+

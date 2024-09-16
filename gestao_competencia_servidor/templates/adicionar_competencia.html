@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Competência{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Competência</title>
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+
+</head>
+<body class="membros-page">
+    <div class="header">
+
+        <h1 class="title">Adicionar Competência</h1>
+
+    </div>
+
+    <form method="post" class="filter-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button type="submit" class="btn btn-primary filter-btn"> <i class="fas fa-filter"></i>Salvar Competência</button>
+    </form>
+</body>
+</html>
+
+ {% endblock %}

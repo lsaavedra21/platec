@@ -1,0 +1,251 @@
+/* membros.css */
+
+/* Reset de margin e padding para o body e html */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o cabeçalho */
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #090E14;
+    padding: 10px;
+}
+
+.title {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+/* Estilos para o formulário de filtro */
+form {
+    margin-bottom: 20px;
+}
+
+/* Estilos para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Adicionado espaçamento entre o cabeçalho e a tabela */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+
+}
+
+th {
+    background-color: #666;
+    color:  white; /* Texto do cabeçalho em branco para contrastar com o fundo escuro */
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9; /* Cor de fundo alternada para melhorar a legibilidade */
+    color: #333; /* Cor do texto para as células */
+}
+
+/* Adiciona transição suave para destacar linhas em hover */
+tr:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+    .filter-form {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+        .filter-form2 {
+        display: flex;
+        flex-direction: column; /* Adicionado para alinhar os elementos em uma coluna vertical */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+        justify-content: flex-start; /* Alinha os itens à esquerda */
+        margin-top: 20px;
+    }
+
+    /* Estilo para o texto "Filtrar por Setor" */
+    label[for="filtroSetor"] {
+        margin-right: 10px; /* Ajuste a margem direita conforme necessário */
+        margin-left: 15px;  /* Adiciona um espaçamento à esquerda */
+    }
+
+#filtroSetor {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 20px;
+        margin-left: 15px; /* Ajuste a margem esquerda conforme necessário */
+        color: #333; /* Cor do texto */
+        background-color: #fff; /* Cor de fundo da caixa de seleção */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+
+
+    }
+
+     /* Adiciona um estilo hover para a caixa de seleção */
+    #filtroSetor:hover {
+        border-color: #555; /* Cor da borda ao passar o mouse */
+    }
+
+    /* Adiciona um estilo de foco para a caixa de seleção */
+    #filtroSetor:focus {
+        border-color: #007bff; /* Cor da borda ao receber foco */
+        outline: none; /* Remove a borda ao redor da caixa de seleção ao receber foco */
+    }
+
+    #filtroColaborador {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 20px;
+        margin-left: 15px; /* Ajuste a margem esquerda conforme necessário */
+        color: #333; /* Cor do texto */
+        background-color: #fff; /* Cor de fundo da caixa de seleção */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+
+
+    }
+
+     /* Adiciona um estilo hover para a caixa de seleção */
+    #filtroColaborador:hover {
+        border-color: #555; /* Cor da borda ao passar o mouse */
+    }
+
+    /* Adiciona um estilo de foco para a caixa de seleção */
+    #filtroColaborador:focus {
+        border-color: #007bff; /* Cor da borda ao receber foco */
+        outline: none; /* Remove a borda ao redor da caixa de seleção ao receber foco */
+    }
+
+
+  /* Adicione estilos para os botões */
+    .filter-btn,
+    .add-btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none; /* Remover sublinhado padrão em links */
+        display: flex;
+        align-items: center;
+        font-weight: bold; /* Adiciona negrito ao texto dos botões */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+    }
+
+    .filter-btn i,
+    .add-btn i {
+        margin-right: 5px; /* Adiciona espaço entre o ícone e o texto */
+    }
+
+    .filter-btn {
+        background-color: #EFDF00;
+        color: #000000;
+        margin-right: 10px; /* Adiciona espaço entre os botões */
+    }
+
+    .add-btn {
+        background-color: #EFDF00;
+        color: #000000;
+    }
+
+    /* Estilizar os botões quando o mouse estiver sobre eles */
+    .filter-btn:hover,
+    .add-btn:hover {
+        background-color: #FFEB3B;
+        color: #000000;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra mais pronunciada ao passar o mouse */
+    }
+
+
+
+/* Estilos para os ícones de ação */
+.action-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 65px; /* Ajuste conforme necessário */
+    word-wrap: break-word; /* Quebra de texto para ajustar ao tamanho da célula */
+    vertical-align: top; /* Alinha o conteúdo ao topo da célula */
+}
+
+.action-icons a {
+    margin-right: 5px;
+    color: #007bff;
+}
+
+.action-icon {
+    margin: 0 5px;
+    font-size: 20px;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Adiciona transição suave para a cor do ícone em hover */
+}
+
+.action-icon:hover {
+    color: #0056b3;
+}
+
+body.membros-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+body.membros-page main {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px; /* Ajuste conforme necessário para espaçamento interno */
+}
+
+body.membros-page table {
+    width: 100%;
+}
+
+   /* Estilo para o texto "Filtrar por Ano" */
+    label[for="filtroAno"] {
+        margin-right: 10px; /* Ajuste a margem direita conforme necessário */
+        margin-left: 15px;  /* Adiciona um espaçamento à esquerda */
+    }
+
+/* Estilo para o seletor de filtro por ano */
+#filtroAno {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Adiciona um estilo hover para o seletor de filtro por ano */
+#filtroAno:hover {
+    border-color: #555;
+}
+
+/* Adiciona um estilo de foco para o seletor de filtro por ano */
+#filtroAno:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.btn-secondary {
+    background-color: #d6d6d6; /* Define a cor de fundo para cinza claro */
+    color: #6c757d; /* Define a cor do texto */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    /* Outros estilos conforme necessário */
+}
+

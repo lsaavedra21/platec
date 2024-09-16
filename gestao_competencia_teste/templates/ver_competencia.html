@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Competencias do colaborador{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Competencias do colaborador</title>
+    <link rel="stylesheet" href="{% static 'css/geral.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <div class="header">
+         <a href="{% url 'membros' %}"  title="Voltar à página membros" style="margin-right: auto;">
+            <button class="btn btn-primary">Voltar</button>
+        </a>
+        <h1 class="title">Competencias do colaborador - {{ membro.nome }}</h1>
+        <h2 class="subtitle">Setor: {{ membro.setor }}</h2>
+
+</div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i>Atualizar
+                    </button>
+ <table>
+        <tr>
+            <th>Competência</th>
+            <th>Nível Atual</th>
+            <th>Novo Nível</th>
+        </tr>
+        <form method="post" action="{% url 'salvar_niveis' %}">
+            {% csrf_token %}
+            <input type="hidden" name="membro_id" value="{{ membro.id }}">
+
+            {% for consulta in consultas|dictsort:"competencia.nome" %}
+            <tr>
+                <td>{{ consulta.competencia.nome }}</td>
+                <td>
+                    {% if consulta.nivel is not None %}
+                        {% if consulta.nivel == 1 %}
+                            NA
+                        {% elif consulta.nivel == 2 %}
+                            0
+                        {% elif consulta.nivel == 3 %}
+                            I
+                        {% elif consulta.nivel == 4 %}
+                            L
+                        {% elif consulta.nivel == 5 %}
+                            U
+                        {% else %}
+                            {{ consulta.nivel }}
+                        {% endif %}
+                    {% else %}
+                        Nenhum
+                    {% endif %}
+                </td>
+                <td>
+                    <select name="niveis[{{ consulta.competencia.id }}]" class="form-select">
+
+                        <option value="1" {% if consulta.nivel == 1 %}selected{% endif %}>NA</option>
+                        <option value="2" {% if consulta.nivel == 2 %}selected{% endif %}>0</option>
+                        <option value="3" {% if consulta.nivel == 3 %}selected{% endif %}>I</option>
+                        <option value="4" {% if consulta.nivel == 4 %}selected{% endif %}>L</option>
+                        <option value="5" {% if consulta.nivel == 5 %}selected{% endif %}>U</option>
+                    </select>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+        </form>
+    </table>
+</body>
+</html>
+
+{% endblock %}

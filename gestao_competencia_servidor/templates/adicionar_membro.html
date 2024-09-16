@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Adicionar Colaborador</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/adicionar_membro.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+         <!-- Adicione o jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#setor').change(function() {
+            var setorId = $(this).val();
+            $('#cargo').empty();  // Limpa as opções atuais do campo "Cargo"
+            {% for cargo in cargos %}
+                {% if cargo.setor.id == setorId %}
+                    $('#cargo').append('<option value="{{ cargo.id }}">{{ cargo.nome }}</option>');  // Adiciona as opções do campo "Cargo" associadas ao setor selecionado
+                {% endif %}
+            {% endfor %}
+        });
+    });
+    </script>
+
+
+    </head>
+
+    <body>
+        <div class="header">
+
+            <h1 class="title">Adicionar Novo Colaborador</h1>
+
+        </div>
+
+    <h1>Dados Gerais</h1>
+
+        {% if mensagem_erro %}
+            <div class="alert alert-danger" style="color: red; font-weight: bold; font-size: larger;">
+                {{ mensagem_erro }}
+            </div>
+        {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="id">* ID:</label>
+        <input type="text" id="id" name="id"><br>
+
+        <label for="nome">* Nome:</label>
+        <input type="text" id="nome" name="nome"><br>
+
+        <label for="email">* Email:</label>
+        <input type="text" id="email" name="email"><br>  <!-- Adicione o campo email -->
+
+        <label for="setor">* Setor:</label>
+        <select id="setor" name="setor">
+            <option value="">Selecione o Setor</option> <!-- Opção vazia -->
+            {% for setor in setores %}
+                <option value="{{ setor.id }}">{{ setor.nome }}</option>
+            {% endfor %}
+        </select><br>
+
+       <label for="cargo">* Cargo:</label>
+        <select id="cargo" name="cargo">
+            <option value="">Selecione um setor primeiro</option>  <!-- Opção padrão -->
+        </select><br>
+
+        <label for="supervisor">* Supervisor:</label>
+         <select id="supervisor" name="supervisor">
+             <option value="">Selecione</option> <!-- Opção vazia -->
+            {% for supervisor in supervisores %}
+                <option value="{{ supervisor.nome }}">{{ supervisor.nome }}</option>
+            {% endfor %}
+         </select><br>
+
+        <label for="area">Área:</label>
+        <input type="text" id="area" name="area"><br>  <!-- Adicione o campo area -->
+
+        <button type="submit" class="add-btn">
+            <i class="fas fa-save"></i> Salvar </button>
+    </form>
+
+
+    </body>
+</html>
+
+{% endblock %}

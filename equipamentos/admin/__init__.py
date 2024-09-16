@@ -1,0 +1,1 @@
+from .equipamentos import *

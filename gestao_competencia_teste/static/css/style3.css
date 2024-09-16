@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+   /* display: flex;*/
+}
+
+.sidebar {
+    height: 100vh;
+    width: 200px;
+    background-color: #000;
+    color: #fff;
+    padding: 16px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: relative; /* Adicionado para posicionar elementos filhos relativamente */
+}
+
+.sidebar-text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-text p {
+    color: #fff;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.line {
+    border: 1px solid #fff;
+    margin-bottom: 20px;
+}
+
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 50px; /* Ajuste o tamanho conforme necessário */
+    height: 50px;
+    border-radius: 50%; /* Torna a imagem arredondada */
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color: #fff; /* Letras em branco */
+}
+
+.sidebar li:hover {
+    background-color: #555;
+}
+
+.content {
+    flex: 1;
+    padding: 16px;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.menu-item {
+    background-color: #FFD700; /* Amarelo */
+    border-radius: 8px; /* Cantos arredondados */
+    margin-bottom: 8px; /* Espaçamento entre os itens do menu */
+    padding: 8px; /* Espaçamento interno */
+    cursor: pointer; /* Altera o cursor ao passar por cima */
+    transition: background-color 0.3s; /* Adiciona uma transição suave */
+}
+
+.menu-item:hover {
+    background-color: #808080; /* Cinza */
+}
+
+.menu-item li {
+    border: none;
+    outline: none;
+    color: black; /* Adicione esta linha para definir a cor do texto */
+}
+
+.menu-item li:hover {
+    background-color: gray; /* Altere para a cor desejada ao passar o mouse */
+    border: none;
+    color: black; /* Adicione esta linha para definir a cor do texto */
+}
+
+
+
+

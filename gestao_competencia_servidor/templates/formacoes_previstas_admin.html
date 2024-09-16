@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Calendario Formações{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario Formações</title>
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+</head>
+<body class="membros-page">
+    <div class="header">
+
+        <h1 class="title">Formações Previstas pela PLATEC - Administrador</h1>
+
+    </div>
+
+    <form method="get" action="" class="filter-form">
+        <label for="filtroAno" style="font-weight: bold;">Filtrar por Ano:</label>
+        <select id="filtroAno" name="ano">
+            <option value="">Todos</option>
+            {% for ano in anos_disponiveis %}
+                <option value="{{ ano }}">{{ ano }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary filter-btn"> <i class="fas fa-filter"></i> Filtrar</button>
+        <a href="{% url 'adicionar_formacao_prevista' %}" class="btn btn-success add-btn"> <i class="fas fa-plus"></i> Adicionar</a>
+    </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Formação</th>
+                    <th>L@A</th>
+                    <th>Formador</th>
+                    <th>Vagas</th>
+                    <th>Vagas Disponiveis</th>
+                    <th>Duração</th>
+                    <th>Local</th>
+                    <th>Data Inicial</th>
+                    <th>Data Final</th>
+                    <th>Status</th>
+                    <th>Ações</th> <!-- Adicione a coluna de ações -->
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for formacao in formacoes_previstas %}
+                    <tr>
+                        <td><a href="{% url 'editar_formacao_prevista_admin' formacao.id %}">{{ formacao.formacao.nome }}</a></td>
+                        <td>{{ formacao.Elearning }}</td>
+                        <td>{{ formacao.formador }}</td>
+                        <td>{{ formacao.vagas }}</td>
+                        <td>{{ formacao.vagasdisponiveis }}</td>
+                        <td>{{ formacao.duracao }}</td>
+                        <td>{{ formacao.local }}</td>
+                        <td class="date-cell">{{ formacao.datainicial }}</td> <!-- Aplicando a classe à célula de data inicial -->
+                        <td class="date-cell">{{ formacao.datafinal }}</td>
+                        <td>{{ formacao.status }}</td>
+                        <td>
+
+
+                    <div class="action-icons">
+                        <a href="{% url 'listar_membros_por_formacao_admin' formacao.id %}" class="btn btn-primary">
+                            <i class="fas fa-eye"></i> <!-- Ícone de olho -->
+                        </a>
+
+                        <a href="{% url 'adicionar_membro_formacaoprevista' formacao_prevista_id=formacao.id %}" class="btn btn-primary">
+                            <i class="far fa-plus-square"></i> <!-- Ícone de adicionar -->
+                        </a>
+
+                        <a href="{% url 'excluir_formacao_prevista' formacao.id %}" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> <!-- Ícone de exclusão -->
+                        </a>
+                    </div>
+
+    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    <!-- Inclua os scripts do Bootstrap e do calendário aqui -->
+</body>
+</html>
+{% endblock %}

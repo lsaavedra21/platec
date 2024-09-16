@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Colaborador a Formação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+</head>
+
+
+<body class="membros-page">
+
+    <div class="header">
+
+        <h1 class="title">Adicionar Colaborador a Formação: {{ formacao_prevista.formacao }}
+            Data: {{ formacao_prevista.data }}
+        </h1>
+    </div>
+
+    <form method="post" action="" class="filter-form">
+        {% csrf_token %}
+        <label for="filtrosetor" style="font-weight: bold;">Filtrar por Setor:</label>
+        <select id="filtroSetor" name="setor">
+            <option value="">Todos os Setores</option>
+            {% for setor in setores %}
+                <option value="{{ setor.id }}">{{ setor.nome }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="membro" style="font-weight: bold;">Selecione um colaborador disponível:</label>
+        <select name="membro" id="membro">
+            <option value="">Selecione um colaborador</option>
+            {% for membro in membros_disponiveis %}
+                <option value="{{ membro.id }}" data-setor="{{ membro.setor_id }}">{{ membro.nome }} (ID: {{ membro.id }}, Email: {{ membro.email }})</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button  type="submit" class="add-btn"> <i class="fas fa-plus"></i> Adicionar Colaborador</button>
+
+        <button type="submit" class="btn btn-primary filter-btn"> <i class="fas fa-filter"></i> Filtrar</button>
+    </form>
+
+    <h2>Coladores Associados:</h2>
+    <ul>
+        {% for membro in membros_associados %}
+            <li>{{ membro.membro.nome }} (ID: {{ membro.membro.id }}, Email: {{ membro.membro.email }})</li>
+        {% empty %}
+            <li>Nenhum colaborador associado a esta formação prevista.</li>
+        {% endfor %}
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Lidar com o clique no botão "Filtrar"
+            $('#filterButton').on('click', function() {
+                var selectedSetor = $('#setor').val();
+
+                // Ocultar todos os membros
+                $('#membro option').hide();
+
+                if (selectedSetor === "") {
+                    // Mostrar todos os membros se nenhum setor estiver selecionado
+                    $('#membro option').show();
+                } else {
+                    // Mostrar apenas os membros do setor selecionado
+                    $('#membro option[data-setor="' + selectedSetor + '"]').show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+    {% endblock %}

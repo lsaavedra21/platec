@@ -1,0 +1,107 @@
+/* Reset de margin e padding para o body e html */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o cabeçalho */
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #090E14;
+    padding: 10px;
+}
+
+.title {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+/* Estilos para o formulário */
+form {
+    margin-bottom: 20px;
+}
+
+/* Adicione estilos gerais para os campos e rótulos */
+form label {
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+form select,
+form input[type="text"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Ocupa toda a largura do contêiner pai */
+}
+
+/* Adicione estilos específicos para o campo de data inicial */
+form input[type="date"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Inclui a largura e a borda no cálculo do tamanho total */
+}
+
+/* Adicione um estilo hover e foco para os campos de entrada */
+form select:hover,
+form input[type="text"]:hover,
+form select:focus,
+form input[type="text"]:focus {
+    border-color: #555;
+}
+
+/* Estilo da seta nos campos de seleção */
+form select::after {
+    content: '\25BC';
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+
+/* Adicione estilos para o botão "Salvar" */
+.add-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    background-color: #EFDF00;
+    color: #000000;
+    margin-right: 10px;
+    margin-left: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilize o botão "Salvar" quando o mouse estiver sobre ele */
+.add-btn:hover {
+    background-color: #FFEB3B;
+    color: #000000;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para o ícone no botão */
+.add-btn i {
+    margin-right: 5px; /* Adiciona espaço entre o ícone e o texto */
+}

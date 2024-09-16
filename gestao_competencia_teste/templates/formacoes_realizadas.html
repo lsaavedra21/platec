@@ -1,0 +1,132 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formações Realizadas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #007bff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #666;
+            color: black;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: white;
+            color: black;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .form-row {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Formações Realizadas</h1>
+    </div>
+
+    <!-- Filtro de pesquisa -->
+    <form method="GET" action="">
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="searchQuery">Pesquisar:</label>
+                    <input type="text" class="form-control" id="searchQuery" name="search_query" value="{{ request.GET.search_query }}">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="setorFilter">Filtrar por Setor:</label>
+                    <select class="form-control" id="setorFilter" name="setor">
+                        <option value="">Todos</option>
+                        {% for setor in setores %}
+                            <option value="{{ setor.id }}" {% if setor.id|stringformat:"s" == request.GET.setor %}selected{% endif %}>{{ setor.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Membro</th>
+                <th>Formação</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for realizacao in formacoes_realizadas %}
+                <tr>
+                    <td>{{ realizacao.membro.nome }}</td>
+                    <td>{{ realizacao.formacao.nome }}</td>
+                    <td>{{ realizacao.Data }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

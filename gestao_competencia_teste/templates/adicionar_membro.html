@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Membros</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/adicionar_membro.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+</head>
+<body>
+
+    <div class="header">
+
+
+        <h1 class="title">Adicionar Novo Colaborador</h1>
+
+    </div>
+
+    <h1>Dados Gerais</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="id">LB:</label>
+        <input type="text" id="id" name="id"><br>
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome"><br>
+
+        <label for="setor">Setor:</label>
+        <select id="setor" name="setor">
+            {% for setor in setores %}
+                <option value="{{ setor.id }}">{{ setor.nome }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="cargo">Cargo:</label>
+        <select id="cargo" name="cargo">
+            {% for cargo in cargos %}
+                <option value="{{ cargo.id }}">{{ cargo.nome }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit" class="add-btn">
+        <i class="fas fa-save"></i> Salvar
+    </form>
+</body>
+</html>
+
+{% endblock %}

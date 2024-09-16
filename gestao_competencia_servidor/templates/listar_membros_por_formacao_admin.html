@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Colaboradores associados à Formação{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colaboradores associados à Formação</title>
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+
+</head>
+
+<body>
+    <div class="header">
+
+       <h1 class="title">Membros associados à Formação Prevista: {{ formacao_prevista.formacao }}</h1>
+
+    </div>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Setor</th>
+                <th>Supervisor</th>
+                <th>Ações</th>
+
+                <!-- Outros campos do membro, se necessário -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for membro in membros %}
+                <tr>
+                    <td>{{ membro.membro.id }}</td>
+                    <td>{{ membro.membro.nome }}</td>
+                    <td>{{ membro.membro.email }}</td>
+                    <td>{{ membro.membro.setor }}</td>
+                    <td>{{ membro.membro.supervisor }}</td>
+<td>
+    <form method="post" action="{% url 'excluir_membro_formacao' membro.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">
+            <i class="far fa-trash-alt"></i>
+        </button>
+    </form>
+</td>
+                    <!-- Outros campos do membro, se necessário -->
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">Nenhum membro associado a esta formação prevista.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+{% endblock %}

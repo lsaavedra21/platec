@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matriz de Valores</title>
+    <!-- Seus links para estilos e scripts aqui -->
+</head>
+<body>
+    <div class="header">
+        <!-- Cabeçalho do seu site -->
+    </div>
+
+    <form method="get" action="">
+        <label for="setor">Filtrar por Setor:</label>
+        <select name="setor" id="setor" onchange="this.form.submit()">
+            <option value="">Todos</option>
+            {% for setor in setores %}
+                <option value="{{ setor.nome }}" {% if setor.nome == selected_setor %}selected{% endif %}>
+                    {{ setor.nome }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+<form method="post" action="{% url 'atualizar_niveis_competencia_area' %}">
+    {% csrf_token %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Competência / Área</th>
+                {% for area in areas %}
+                    <th>{{ area }}</th>
+                    <!-- Adicione um campo oculto para o nome completo da área -->
+                    <input type="hidden" name="areas[{{ area }}]" value="{{ area }}">
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for competencia, valores in matriz_data.items %}
+                <tr>
+                    <td>{{ competencia }}</td>
+                    {% for area, valor in valores.items %}
+                        <td>
+                            <input type="number" min="0" max="100" name="competencias[{{ competencia.id }}][{{ area }}]"
+                                value="{{ valor|default:'' }}"
+                                class="nivel-input">
+                            <!-- Use o campo oculto para a área completa -->
+                            <input type="hidden" name="areas[{{ area }}]" value="{{ area }}">
+                            <!-- Adicione um campo oculto para o setor correspondente -->
+                            <input type="hidden" name="setores[{{ area }}]" value="{{ setor.nome }}">
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary" id="salvar-niveis">Salvar</button>
+</form>
+
+
+</body>
+</html>

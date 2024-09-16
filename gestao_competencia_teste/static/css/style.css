@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.menu {
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+.menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menu ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.menu ul li a:hover {
+    background-color: #555;
+}
+
+.content {
+    margin-left: var(--sidebar-dw); /* Inicializa com a largura da barra lateral */
+    padding: 0px;
+    -webkit-transition: margin-left 0.5s ease; /* Adiciona transição na margem esquerda */
+    -o-transition: margin-left 0.5s ease;
+    transition: margin-left 0.5s ease;
+}
+/* myapp/static/css/membros.css (ou caminho correto) */
+
+.header-container {
+    width: 100%;
+    background-color: #f2f2f2; /* Cor de fundo da parte superior da tela */
+}
+
+.header {
+    max-width: 100vw; /* Ou outro valor desejado para o máximo de largura */
+    margin: 0 auto; /* Centraliza o conteúdo do cabeçalho */
+    padding: 20px; /* Espaçamento interno para melhor visualização */
+}
+
+.logo {
+    /* Adicione estilos para o seu logotipo conforme necessário */
+
+    margin-left: 10px; /* Adicione margem à direita do logotipo conforme necessário */
+}
+
+.logo__name {
+    /* Adicione estilos para o nome do logotipo conforme necessário */
+    margin-left: 25px; /* Adicione margem à esquerda do nome do logotipo conforme necessário */
+}
+
+/* Adicione outros estilos conforme necessário */

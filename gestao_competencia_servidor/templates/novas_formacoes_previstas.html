@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Adicionar nova Formaçao{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar nova Formaçao</title>
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/adicionar_membro.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+
+</head>
+
+<body>
+
+   <div class="header">
+
+        <h1 class="title">Adicionar nova Formação Prevista</h1>
+
+    </div>
+
+   <h1>Dados da Formação</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Campo de seleção para escolher a formação -->
+        <label for="formacao">Formação:</label>
+        <select id="formacao" name="formacao">
+            {% for formacao in formacoes %}
+                    <option value="{{ formacao.id }}" {% if formacao.id == formacao_prevista.formacao.id %} selected {% endif %}>{{ formacao.nome }}</option>
+            {% endfor %}
+        </select><br>
+
+       <!-- Campo para o formador -->
+        <label for="formador">Formador:</label>
+        <input type="text" id="formador" name="formador"><br>
+
+        <!-- Campo para vagas -->
+        <label for="vagas">Vagas:</label>
+        <input type="text" id="vagas" name="vagas"><br>
+
+        <!-- Campo para duração -->
+        <label for="duracao">Duração:</label>
+        <input type="text" id="duracao" name="duracao"><br>
+
+        <!-- Campo para data -->
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data"><br>
+
+        <!-- Campo para local -->
+        <label for="local">Local:</label>
+        <input type="text" id="local" name="local"><br>
+
+        <!-- Campo para datainicial -->
+        <label for="datainicial">Data Inicial:</label>
+        <input type="date" id="datainicial" name="datainicial"><br>
+
+        <!-- Campo para datafinal -->
+        <label for="datafinal">Data Final:</label>
+        <input type="date" id="datafinal" name="datafinal"><br>
+
+        <!-- Campo para vagasdisponiveis -->
+        <label for="vagasdisponiveis">Vagas Disponíveis:</label>
+        <input type="text" id="vagasdisponiveis" name="vagasdisponiveis"><br>
+
+        <!-- Campo para Elearning -->
+        <label for="elearning">E-Learning:</label>
+        <input type="text" id="elearning" name="elearning"><br>
+
+        <button type="submit" value="Salvar Formação Prevista" class="add-btn">
+            <i class="fas fa-save"></i> Salvar </button>
+    </form>
+</body>
+</html>
+
+{% endblock %}

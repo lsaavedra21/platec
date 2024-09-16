@@ -1,0 +1,9 @@
+## Conectar em produção via SSH
+
+No terminal digite o comando a baixo 
+
+```bash
+$ ssh platec@10.187.6.154
+```
+A senha é senha: 1
+

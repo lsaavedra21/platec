@@ -1,0 +1,24 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr>
+          <th>Membro</th>
+          {% for competencia in competencias %}
+            <th>{{ competencia.nome }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>{{ membro.nome }}</th>
+          {% for nivel in niveis %}
+            <td>{{ nivel }}</td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

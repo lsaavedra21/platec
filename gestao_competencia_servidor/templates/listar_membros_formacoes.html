@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Membros{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colaboradores</title>
+    <!-- Adicione os estilos do Font Awesome aqui -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Seus estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'css/membros.css'%}" /> <!-- Crie um arquivo CSS específico para membros, se necessário -->
+
+
+</head>
+<body>
+    <div class="header">
+
+        <h1 class="title">Membros cadastrados na formação</h1>
+
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID do Membro</th>
+                <th>Nome do Membro</th>
+                <th>Formação</th>
+                <th>Data da Formação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membro_formacao in membros_formacoes %}
+                <tr>
+                    <td>{{ membro_formacao.membro.id }}</td>
+                    <td>{{ membro_formacao.membro.nome }}</td>
+                    <td>{{ membro_formacao.formacao.formacao.nome }}</td>
+                    <td>{{ membro_formacao.formacao.data }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+{% endblock %}
